@@ -29,6 +29,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
   },
+  externals: [
+    {
+      "vue": 'vendor.vue',
+      "vue-router": 'vendor.Router'
+    }
+  ],
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
@@ -116,8 +122,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
+        to: config.build.assetsStaticSourceDirectory,
         ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../appconfig.json'),
+        to: config.build.assetsRoot
       }
     ])
   ]

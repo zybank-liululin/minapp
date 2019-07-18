@@ -1,0 +1,34 @@
+{
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "fontColor": "#7A7E83",
+    "fontSelectedColor": "#3cc51f",
+    "backgroundColor": "#ffffff",
+    "borderTopColor": "black",
+    "items": [
+        {
+            "iconPath": "src/static/pretab1.png",
+            "text": "组件",
+            "pageRoute": "main",
+            "selectedIconPath": "src/static/tab1.png"
+        },
+        {
+          "iconPath": "src/static/pretab2.png",
+          "text": "接口",
+          "pageRoute": "interfaces",
+          "selectedIconPath": "src/static/tab2.png"
+        }
+    ]
+  },
+  "pages": ["components", "componentsA", "componentsB", "interfaces"],
+  "launchParams": {
+    "components": {
+      "navigationBarBackgroundColor": "black"
+    }
+  },
+  "prerenderPage": "index.html"
+}

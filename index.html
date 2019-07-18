@@ -4,9 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>test</title>
+    <script type=text/javascript src=https://base/jsBridge.js> </script>
+    <script type=text/javascript src=https://base/jsApi.js> </script>
+    <script type=text/javascript src=https://base/vendor.js> </script>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    (function(win, doc) {
+      var win = window;
+      var doc = win.document;	
+      var docEl = doc.documentElement,
+        resizeEvt = "orientationchange" in win ? "orientationchange" : "resize",
+        recalc = function() {
+          var clientwidth = docEl.clientWidth;
+          if(!clientwidth) { return false; }
+          var fz = 100 * (clientwidth / 375) + "px"
+          docEl.style.fontSize = fz
+          var realfz = win.getComputedStyle(docEl).fontSize
+          if (fz !== realfz) {
+            docEl.style.fontSize = fz.replace("px", '') * (fz.replace("px", '') / realfz.replace("px", '')) + "px"
+          }
+        };
+      if(!doc.addEventListener) { return false; }
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener("DOMContentLoaded", recalc, false);
+    })(window, document)
+    zyb.appReady&&zyb.appReady()
+  </script>
 </html>

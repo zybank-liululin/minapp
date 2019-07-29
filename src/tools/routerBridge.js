@@ -10,6 +10,12 @@ if (!isApp) {
   window.zyb.redirectTo = function (param) {
     router.replace(param)
   }
+  window.zyb.switchTab = window.zyb.reLaunch = function (param) {
+    router.replace(param)
+  }
+  window.zyb.navigateBack = function (param) {
+    router.go(-1)
+  }
 } else {
   window.router = router
 }

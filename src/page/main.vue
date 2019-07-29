@@ -9,32 +9,61 @@
         <input class="select-input" type="text" placeholder="搜索你想要的组件及API">
       </div>
     </div>
-    <div class="section-middle">
-      <div class="item" @click="selected('component')">
-        <div class="type"><span :class="{blue: isshow}" @click="isshow=!isshow">基础组件</span></div>
+
+    <div class="section-bottom">
+      <div class="title">界面</div>
+      <div class="line" @click="goto('confirm')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">确认框</span>
+        <span class="line-name">confirm</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="item" @click="selected('api')">
-        <div class="type" ><span :class="{blue: !isshow}" @click="isshow=!isshow">扩展组件</span></div>
+      <div class="line" @click="goto('alert')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">警告框</span>
+        <span class="line-name">alert</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('toast')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">弱提示</span>
+        <span class="line-name">toast</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('prompt')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">对话框</span>
+        <span class="line-name">prompt</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('loading')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">加载</span>
+        <span class="line-name">showLoading</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
     </div>
     <div class="section-bottom">
-      <div class="title">视图容器</div>
-      <div class="line">
+      <div class="title">导航</div>
+      <div class="line" @click="goto('navigate')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
         <span class="line-content">头部导航</span>
         <span class="line-name">navigateBar</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="line">
+    </div>
+    <div class="section-bottom">
+      <div class="title">数据</div>
+      <div class="line" @click="goto('storageMain')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">弹框</span>
-        <span class="line-name">MessageBox</span>
+        <span class="line-content">永久存储</span>
+        <span class="line-name">storage</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="line">
+      <div class="line" @click="goto('tempStorageMain')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">提示框</span>
-        <span class="line-name">toast</span>
+        <span class="line-content">临时存储</span>
+        <span class="line-name">tempStorage</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
     </div>
@@ -46,16 +75,17 @@ export default {
   name: 'interfaces',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       isshow: true
     }
   },
-  created () {
+  mounted () {
+  },
+  activated () {
     window.Page(this)
   },
   methods: {
-    nextPage () {
-      window.zyb.navigateTo({name: 'componentsB', params: {a: 1}})
+    goto (route) {
+      window.zyb.navigateTo({name: route})
     },
     onPageShow: function () {
       console.log('onPageShow')

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-     <keep-alive>
-      <router-view v-if = 'isRouterAlive'></router-view>
-    </keep-alive>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
   </div>
 </template>
 
@@ -16,8 +16,12 @@ export default {
   },
   data () {
     return {
-      isRouterAlive: true
+      isRouterAlive: true,
+      transitionName: 'none',
+      isAnim: false
     }
+  },
+  watch: {
   },
   methods: {
     reload () {
@@ -37,5 +41,8 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+  }
+  [v-cloak] {
+    display: none;
   }
 </style>

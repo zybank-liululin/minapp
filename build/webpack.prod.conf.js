@@ -32,7 +32,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   externals: [
     {
       "vue": 'vendor.vue',
-      "vue-router": 'vendor.Router'
+      "vue-router": 'vendor.Router',
+      "vconsole": 'vendor.vconsole'
     }
   ],
   plugins: [

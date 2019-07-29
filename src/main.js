@@ -1,9 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import App from './App'
 import router from './router'
 import './tools/routerBridge'
+import './tools/frameTools'
+
+Vue.use(MintUI)
 
 Vue.config.productionTip = false
 
@@ -14,4 +19,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-router.push({name: 'main'})
+// router.push({name: 'main', meta: {back: true}})

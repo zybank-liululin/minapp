@@ -1,5 +1,9 @@
 {
   "window": {
+    "navigationBarTitleText": "小程序官方实例",
+    "transparentTitle": "auto",
+    "showTitleLoading": true,
+    "enablePullDownRefresh": true,
     "navigationBarBackgroundColor": "#000000",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#ffffff"
@@ -24,10 +28,10 @@
         }
     ]
   },
-  "pages": ["components", "componentsA", "componentsB", "interfaces"],
+  "pages": ["interfaces", "main", "navigate", "newPage", "confirm", "loading", "alert", "prompt", "toast", "storageMain"],
   "launchParams": {
     "components": {
-      "navigationBarBackgroundColor": "black"
+      "navigationBarBackgroundColor": "#000000"
     }
   },
   "prerenderPage": "index.html"

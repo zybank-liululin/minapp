@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import './tools/routerBridge'
 import './tools/frameTools'
+// import './tools/netWorkBridge'
 
 Vue.use(MintUI)
 

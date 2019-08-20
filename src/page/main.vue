@@ -9,7 +9,14 @@
         <input class="select-input" type="text" placeholder="搜索你想要的组件及API">
       </div>
     </div>
-
+    <div class="section-middle">
+      <div class="item" @click="selected('component')">
+        <div class="type"><span :class="{blue: isshow}" @click="isshow=!isshow">基础组件</span></div>
+      </div>
+      <div class="item" @click="selected('api')">
+        <div class="type" ><span :class="{blue: !isshow}" @click="isshow=!isshow">扩展组件</span></div>
+      </div>
+    </div>
     <div class="section-bottom">
       <div class="title">界面</div>
       <div class="line" @click="goto('confirm')">
@@ -40,6 +47,12 @@
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
         <span class="line-content">加载</span>
         <span class="line-name">showLoading</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('pullDownRefresh')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">下拉刷新</span>
+        <span class="line-name">pullDownRefresh</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
     </div>
@@ -87,16 +100,18 @@ export default {
     goto (route) {
       window.zyb.navigateTo({name: route})
     },
-    onPageShow: function () {
+    onPageShow () {
       console.log('onPageShow')
     },
-    onBack: function () {
+    onBack () {
       console.log('onBack')
     },
-    onPageHide: function () {
+    onPageHide () {
       console.log('onPageHide')
     },
-    selected: function (data) {
+    onPullDownRefresh () {
+      console.log('onPullDownRefresh', new Date())
+      window.zyb.stopPullDownRefresh()
     }
   }
 }

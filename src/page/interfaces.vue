@@ -1,54 +1,79 @@
 <template>
   <div class="scroller-box">
     <div class="section-top">
-      <img class="icon" src="../../static/zyLogo.png" />
-      <div class="title">小程序官方示例</div>
-      <div class="description">以下展示小程序官方组件和API示例</div>
       <div class="select">
         <img class="select-icon" src="../../static/select.png" />
         <input class="select-input" type="text" placeholder="搜索你想要的组件及API">
       </div>
     </div>
-
     <div class="section-bottom">
-      <div class="title">界面</div>
-      <div class="line" @click="goto('confirm')">
+      <div class="title">开放接口</div>
+      <div class="line" @click="goto('oauthLogin')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">确认框</span>
-        <span class="line-name">confirm</span>
+        <span class="line-content">授权登录</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="line" @click="goto('alert')">
+      <div class="line" @click="goto('request')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">警告框</span>
-        <span class="line-name">alert</span>
+        <span class="line-content">网络请求</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="line" @click="goto('toast')">
+      <div class="line" @click="goto('request')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">弱提示</span>
-        <span class="line-name">toast</span>
+        <span class="line-content">网络请求(ptRequest)</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="line" @click="goto('prompt')">
+      <div class="line" @click="goto('location')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">对话框</span>
-        <span class="line-name">prompt</span>
+        <span class="line-content">获取地理位置</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
-      <div class="line" @click="goto('loading')">
+      <div class="line" @click="goto('share')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">加载</span>
-        <span class="line-name">showLoading</span>
+        <span class="line-content">分享</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('chooseImage')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">图片选择</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
     </div>
     <div class="section-bottom">
-      <div class="title">导航</div>
-      <div class="line" @click="goto('navigate')">
+      <div class="title">设备</div>
+      <div class="line" @click="goto('canIUse')">
         <span class="line-icon"><img src="../../static/component.png" alt=""></span>
-        <span class="line-content">头部导航</span>
-        <span class="line-name">navigateBar</span>
+        <span class="line-content">api是否支持当前版本</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('SDKVersion')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">获取基础库版本号</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('getSystemInfo')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">获取手机系统信息</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('network')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">网络状态</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('clipboard')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">剪贴板</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('makePhoneCall')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">拨打电话</span>
+        <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
+      </div>
+      <div class="line" @click="goto('choosePhoneContact')">
+        <span class="line-icon"><img src="../../static/component.png" alt=""></span>
+        <span class="line-content">选择手机联系人</span>
         <span class="line-arrow"><img src="../../static/arrow.png" alt=""></span>
       </div>
     </div>
@@ -72,16 +97,18 @@ export default {
     goto (route) {
       window.zyb.navigateTo({name: route})
     },
-    onPageShow: function () {
+    onPageShow () {
       console.log('onPageShow')
     },
-    onBack: function () {
+    onBack () {
       console.log('onBack')
     },
-    onPageHide: function () {
+    onPageHide () {
       console.log('onPageHide')
     },
-    selected: function (data) {
+    onPullDownRefresh () {
+      console.log('onPullDownRefresh', new Date())
+      window.zyb.stopPullDownRefresh()
     }
   }
 }
@@ -93,7 +120,7 @@ export default {
 }
 .section-top {
   background-color: #1D1D29;
-  height:2.1rem;
+  height:0.4rem;
   padding: 0.44rem;
 }
 .section-top .icon {
@@ -115,7 +142,7 @@ export default {
   height: 0.44rem;
   background-color: white;
   position: absolute;
-  top: 1.87rem;
+  top: 0.62rem;
   border-radius: 0.04rem;
   line-height: 0.44rem;
   left: 6%;
@@ -178,11 +205,7 @@ export default {
   height: 0.26rem;
 }
 .line-content {
-  flex: 2;
-}
-.line-name {
-  flex: 6;
-  color: #CCCCCC;
+  flex: 8;
 }
 .line-arrow {
   width: 0.13rem;

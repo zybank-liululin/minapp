@@ -1,0 +1,74 @@
+<template>
+  <div class="scroller-box">
+    <div class="title">网络请求</div>
+    <div class="outer">
+      <div>request</div>
+      <mt-button class="item" type="primary" size="large" @click="request">发起网络请求</mt-button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { Button } from 'mint-ui'
+export default {
+  name: 'components',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  component: {
+    mtButton: Button
+  },
+  created () {
+  },
+  activated () {
+    window.Page(this)
+  },
+  methods: {
+    request () {
+      window.zyb.showLoading()
+      window.zyb.request({
+        url: 'http://www.weather.com.cn/data/sk/101010100.html',
+        method: 'GET',
+        data: {
+          from: '中原银行',
+          production: 'ZybJSAPI'
+        },
+        dataType: 'json',
+        success: function (res) {
+          window.zyb.alert({content: JSON.stringify(res.data)})
+        },
+        fail: function (res) {
+          window.zyb.alert({content: 'fail'})
+        },
+        complete: function (res) {
+          window.zyb.hideLoading()
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style scoped>
+.scroller-box {
+  -webkit-overflow-scrolling: touch;
+  padding: 0.2rem;
+  text-align: left;
+}
+.title{
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-size: 0.16rem;
+}
+.item{
+  margin-top: 0.14rem;
+}
+.outer {
+  width: 100%;
+  height: 1.2rem;
+  padding: 0.1rem 0.2rem 0.2rem 0.2rem;
+  background-color: white;
+}
+</style>

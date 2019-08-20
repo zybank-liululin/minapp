@@ -1,12 +1,14 @@
 {
   "window": {
     "navigationBarTitleText": "小程序官方实例",
-    "transparentTitle": "auto",
-    "showTitleLoading": true,
-    "enablePullDownRefresh": true,
+    "transparentTitle": "none",
+    "enablePullDownRefresh": "NO",
+    "enableBounceVertical":"YES",
     "navigationBarBackgroundColor": "#000000",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#ffffff"
+    "backgroundColor": "#ffffff",
+    "backgroundImageColor":"#f5f5f5",
+    "backgroundImageUrl":""
   },
   "tabBar": {
     "fontColor": "#7A7E83",
@@ -28,11 +30,17 @@
         }
     ]
   },
-  "pages": ["interfaces", "main", "navigate", "newPage", "confirm", "loading", "alert", "prompt", "toast", "storageMain"],
+  "pages": ["interfaces", "main", "navigate", "newPage", "confirm", "loading",
+     "alert", "prompt", "toast", "storageMain", "pullDownRefresh", "oauthLogin", 
+     "request", "canIUse", "choosePhoneContact", "network", "getSystemInfo",
+     "makePhoneCall", "SDKVersion", "clipboard", "location", "share", "chooseImage"],
   "launchParams": {
-    "components": {
-      "navigationBarBackgroundColor": "#000000"
+    "main": {
+      "navigationBarBackgroundColor": "#000000",
+      "transparentTitle": "auto",
+      "enablePullDownRefresh": "YES"
     }
   },
-  "prerenderPage": "index.html"
+  "prerenderPage": "index.html",
+  "commonJs": "./vendor.js"
 }

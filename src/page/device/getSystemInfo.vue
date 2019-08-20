@@ -1,0 +1,69 @@
+<template>
+  <div class="scroller-box">
+    <div class="title">获取手机系统信息</div>
+    <div class="outer">
+      <div>getSystemInfo</div>
+      <mt-button class="item" type="primary" size="large" @click="getSystemInfo">获取手机系统信息</mt-button>
+    </div>
+    <div class="title">同步获取手机系统信息</div>
+    <div class="outer">
+      <div>getSystemInfoSync</div>
+      <mt-button class="item" type="primary" size="large" @click="getSystemInfoSync">同步获取手机系统信息</mt-button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { Button } from 'mint-ui'
+export default {
+  name: 'components',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  component: {
+    mtButton: Button
+  },
+  created () {
+  },
+  activated () {
+    window.Page(this)
+  },
+  methods: {
+    getSystemInfo () {
+      window.zyb.getSystemInfo({
+        success: (res) => {
+          window.zyb.alert({content: JSON.stringify(res)})
+        }
+      })
+    },
+    getSystemInfoSync () {
+      let res = window.zyb.getSystemInfoSync()
+      window.zyb.alert({content: JSON.stringify(res)})
+    }
+  }
+}
+</script>
+
+<style scoped>
+.scroller-box {
+  -webkit-overflow-scrolling: touch;
+  padding: 0.2rem;
+  text-align: left;
+}
+.title{
+  height: 0.4rem;
+  line-height: 0.4rem;
+  font-size: 0.16rem;
+}
+.item{
+  margin-top: 0.14rem;
+}
+.outer {
+  width: 100%;
+  height: 1.2rem;
+  padding: 0.1rem 0.2rem 0.2rem 0.2rem;
+  background-color: white;
+}
+</style>

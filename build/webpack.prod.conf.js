@@ -41,6 +41,15 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: '[name].js',
+      minChunks: function (module,count) {
+          console.log(module.resource,`引用次数${count}`);
+          //"有正在处理文件" + "这个文件是 .js 后缀" + "这个文件是在 node_modules 中"
+          return count>2
+      }
+    }),
     // new UglifyJsPlugin({
     //   uglifyOptions: {
     //     compress: {
@@ -122,13 +131,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsStaticSourceDirectory,
-        ignore: ['.*']
-      },
-      {
         from: path.resolve(__dirname, '../appconfig.json'),
         to: config.build.assetsRoot
+      }
+    ]),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static/tabBarImgs'),
+        to: config.build.assetsTabBarImgsPath
       }
     ])
   ]
